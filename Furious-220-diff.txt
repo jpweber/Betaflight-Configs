@@ -19,6 +19,8 @@ name furious220
 
 
 # feature
+feature -RX_PARALLEL_PWM
+feature RX_SERIAL
 feature TELEMETRY
 feature RSSI_ADC
 feature LED_STRIP
