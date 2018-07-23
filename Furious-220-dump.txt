@@ -19,6 +19,8 @@ name furious220
 
 
 # feature
+feature -RX_PARALLEL_PWM
+feature RX_SERIAL
 feature TELEMETRY
 feature RSSI_ADC
 feature LED_STRIP
@@ -66,10 +68,12 @@ aux 4 28 3 1850 2100 0
 # rxfail
 
 # master
-set acc_calibration = -6,-12,-101
+set acc_calibration = -21,10,-65
 set fpv_mix_degrees = 20
 set serialrx_provider = SBUS
+set dshot_idle_value = 500
 set motor_pwm_protocol = DSHOT600
+set vbat_warning_cell_voltage = 37
 set osd_units = IMPERIAL
 set osd_warn_core_temp = OFF
 set osd_vbat_pos = 2401
@@ -113,16 +117,24 @@ set osd_esc_rpm_pos = 83
 profile 0
 
 set dterm_notch_cutoff = 0
+set p_pitch = 44
+set i_pitch = 40
+set d_pitch = 20
+set p_roll = 58
+set i_roll = 50
+set d_roll = 22
+set p_yaw = 70
+set i_level = 100
+set d_level = 100
+set level_limit = 47
 
 # rateprofile
 rateprofile 0
 
-set thr_expo = 30
+set thr_expo = 20
 set roll_expo = 20
 set pitch_expo = 20
 set yaw_expo = 20
-set pitch_srate = 60
-set yaw_srate = 60
 
 # dump
 
@@ -297,8 +309,8 @@ feature -SOFTSPI
 feature -ESC_SENSOR
 feature -ANTI_GRAVITY
 feature -DYNAMIC_FILTER
+feature RX_SERIAL
 feature TELEMETRY
-feature RX_PARALLEL_PWM
 feature RSSI_ADC
 feature LED_STRIP
 feature OSD
@@ -566,7 +578,7 @@ set acc_hardware = AUTO
 set acc_lpf_hz = 10
 set acc_trim_pitch = 0
 set acc_trim_roll = 0
-set acc_calibration = -6,-12,-101
+set acc_calibration = -21,10,-65
 set align_mag = DEFAULT
 set mag_bustype = I2C
 set mag_i2c_device = 2
@@ -620,7 +632,7 @@ set blackbox_mode = NORMAL
 set min_throttle = 1070
 set max_throttle = 2000
 set min_command = 1000
-set dshot_idle_value = 450
+set dshot_idle_value = 500
 set dshot_burst = OFF
 set use_unsynced_pwm = OFF
 set motor_pwm_protocol = DSHOT600
@@ -643,7 +655,7 @@ set bat_capacity = 0
 set vbat_max_cell_voltage = 43
 set vbat_full_cell_voltage = 41
 set vbat_min_cell_voltage = 33
-set vbat_warning_cell_voltage = 35
+set vbat_warning_cell_voltage = 37
 set vbat_hysteresis = 1
 set current_meter = ADC
 set battery_meter = ADC
@@ -888,19 +900,19 @@ set acro_trainer_angle_limit = 20
 set acro_trainer_lookahead_ms = 50
 set acro_trainer_debug_axis = ROLL
 set acro_trainer_gain = 75
-set p_pitch = 50
-set i_pitch = 50
-set d_pitch = 27
-set p_roll = 46
-set i_roll = 45
-set d_roll = 25
-set p_yaw = 65
+set p_pitch = 44
+set i_pitch = 40
+set d_pitch = 20
+set p_roll = 58
+set i_roll = 50
+set d_roll = 22
+set p_yaw = 70
 set i_yaw = 45
 set d_yaw = 0
 set p_level = 50
-set i_level = 50
-set d_level = 75
-set level_limit = 55
+set i_level = 100
+set d_level = 100
+set level_limit = 47
 set horizon_tilt_effect = 75
 set horizon_tilt_expert_mode = OFF
 set abs_control_gain = 0
@@ -911,7 +923,7 @@ set abs_control_error_limit = 20
 rateprofile 0
 
 set thr_mid = 50
-set thr_expo = 30
+set thr_expo = 20
 set rates_type = BETAFLIGHT
 set roll_rc_rate = 100
 set pitch_rc_rate = 100
@@ -920,8 +932,8 @@ set roll_expo = 20
 set pitch_expo = 20
 set yaw_expo = 20
 set roll_srate = 70
-set pitch_srate = 60
-set yaw_srate = 60
+set pitch_srate = 70
+set yaw_srate = 70
 set tpa_rate = 10
 set tpa_breakpoint = 1650
 set throttle_limit_type = OFF
