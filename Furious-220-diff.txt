@@ -24,6 +24,7 @@ feature RX_SERIAL
 feature TELEMETRY
 feature RSSI_ADC
 feature LED_STRIP
+feature AIRMODE
 
 # beeper
 
@@ -68,16 +69,21 @@ aux 4 28 3 1850 2100 0
 # rxfail
 
 # master
-set acc_calibration = -21,10,-65
-set fpv_mix_degrees = 20
+set gyro_lowpass_hz = 120
+set acc_trim_pitch = 4
+set acc_calibration = -32,0,-38
+set rc_interp_ch = RPYT
+set rc_smoothing_type = FILTER
+set fpv_mix_degrees = 35
 set serialrx_provider = SBUS
 set dshot_idle_value = 500
 set motor_pwm_protocol = DSHOT600
 set vbat_warning_cell_voltage = 37
 set osd_units = IMPERIAL
+set osd_warn_batt_not_full = OFF
 set osd_warn_core_temp = OFF
 set osd_vbat_pos = 2401
-set osd_rssi_pos = 40
+set osd_rssi_pos = 2169
 set osd_tim_1_pos = 2423
 set osd_tim_2_pos = 33
 set osd_flymode_pos = 2145
@@ -112,28 +118,40 @@ set osd_nheading_pos = 311
 set osd_nvario_pos = 279
 set osd_esc_tmp_pos = 82
 set osd_esc_rpm_pos = 83
+set osd_stat_bbox = OFF
+set osd_stat_bb_no = OFF
 
 # profile
 profile 0
 
+set dterm_lowpass_hz = 80
+set dterm_lowpass2_hz = 160
 set dterm_notch_cutoff = 0
-set p_pitch = 44
-set i_pitch = 40
-set d_pitch = 20
-set p_roll = 58
-set i_roll = 50
-set d_roll = 22
-set p_yaw = 70
+set setpoint_relax_ratio = 50
+set dterm_setpoint_weight = 80
+set iterm_relax = RP
+set iterm_relax_cutoff = 10
+set throttle_boost = 8
+set p_pitch = 58
+set i_pitch = 65
+set d_pitch = 35
+set p_roll = 50
+set i_roll = 60
+set d_roll = 30
+set i_yaw = 60
+set d_yaw = 20
 set i_level = 100
 set d_level = 100
 set level_limit = 47
 
 # rateprofile
-rateprofile 0
+rateprofile 1
 
 set thr_expo = 20
 set roll_expo = 20
 set pitch_expo = 20
 set yaw_expo = 20
+set tpa_rate = 20
+set tpa_breakpoint = 1050
 
 # 
