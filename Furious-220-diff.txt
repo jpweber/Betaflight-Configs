@@ -148,12 +148,12 @@ set d_level = 100
 set level_limit = 47
 
 # rateprofile
-rateprofile 0
+rateprofile 1
 
-set thr_expo = 30
-set roll_expo = 30
-set pitch_expo = 30
-set yaw_expo = 30
+set thr_expo = 20
+set roll_expo = 20
+set pitch_expo = 20
+set yaw_expo = 20
 set tpa_rate = 20
 set tpa_breakpoint = 1050
 
