@@ -61,17 +61,23 @@ aux 3 13 2 1925 2100 0
 aux 4 28 3 1850 2100 0
 
 # adjrange
+adjrange 0 0 3 900 1075 12 3 0 0
+adjrange 1 1 3 1375 1650 12 3 0 0
+adjrange 2 2 3 1825 2100 12 3 0 0
 
 # rxrange
 
 # vtx
 
 # rxfail
+rxfail 5 s 1000
 
 # master
 set gyro_lowpass_hz = 120
-set acc_trim_pitch = 4
+set acc_trim_pitch = 6
 set acc_calibration = -32,0,-38
+set min_check = 1010
+set max_check = 1990
 set rc_interp_ch = RPYT
 set rc_smoothing_type = FILTER
 set fpv_mix_degrees = 35
@@ -79,21 +85,24 @@ set serialrx_provider = SBUS
 set dshot_idle_value = 500
 set motor_pwm_protocol = DSHOT600
 set vbat_warning_cell_voltage = 37
+set deadband = 3
+set pid_process_denom = 1
 set osd_units = IMPERIAL
 set osd_warn_batt_not_full = OFF
+set osd_warn_crash_flip = OFF
 set osd_warn_core_temp = OFF
 set osd_vbat_pos = 2401
 set osd_rssi_pos = 2169
 set osd_tim_1_pos = 2423
-set osd_tim_2_pos = 33
+set osd_tim_2_pos = 406
 set osd_flymode_pos = 2145
 set osd_throttle_pos = 225
 set osd_vtx_channel_pos = 377
 set osd_crosshairs_pos = 2253
 set osd_ah_sbar_pos = 2254
 set osd_ah_pos = 200
-set osd_current_pos = 385
-set osd_mah_drawn_pos = 353
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2368
 set osd_craft_name_pos = 426
 set osd_gps_speed_pos = 218
 set osd_gps_lon_pos = 82
@@ -124,34 +133,23 @@ set osd_stat_bb_no = OFF
 # profile
 profile 0
 
-set dterm_lowpass_hz = 80
-set dterm_lowpass2_hz = 160
 set dterm_notch_cutoff = 0
-set setpoint_relax_ratio = 50
-set dterm_setpoint_weight = 80
-set iterm_relax = RP
-set iterm_relax_cutoff = 10
-set throttle_boost = 8
-set p_pitch = 58
-set i_pitch = 65
-set d_pitch = 35
-set p_roll = 50
-set i_roll = 60
-set d_roll = 30
-set i_yaw = 60
-set d_yaw = 20
-set i_level = 100
-set d_level = 100
-set level_limit = 47
+set p_yaw = 64
 
 # rateprofile
-rateprofile 1
+rateprofile 0
 
-set thr_expo = 20
-set roll_expo = 20
-set pitch_expo = 20
-set yaw_expo = 20
-set tpa_rate = 20
+set thr_expo = 30
+set roll_rc_rate = 140
+set pitch_rc_rate = 140
+set yaw_rc_rate = 140
+set roll_expo = 30
+set pitch_expo = 30
+set yaw_expo = 30
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 60
+set tpa_rate = 15
 set tpa_breakpoint = 1050
 
 # dump
@@ -520,9 +518,9 @@ aux 18 0 0 900 900 0
 aux 19 0 0 900 900 0
 
 # adjrange
-adjrange 0 0 0 900 900 0 0 0 0
-adjrange 1 0 0 900 900 0 0 0 0
-adjrange 2 0 0 900 900 0 0 0 0
+adjrange 0 0 3 900 1075 12 3 0 0
+adjrange 1 1 3 1375 1650 12 3 0 0
+adjrange 2 2 3 1825 2100 12 3 0 0
 adjrange 3 0 0 900 900 0 0 0 0
 adjrange 4 0 0 900 900 0 0 0 0
 adjrange 5 0 0 900 900 0 0 0 0
@@ -560,7 +558,7 @@ rxfail 1 a
 rxfail 2 a
 rxfail 3 a
 rxfail 4 h
-rxfail 5 h
+rxfail 5 s 1000
 rxfail 6 h
 rxfail 7 h
 rxfail 8 h
@@ -595,7 +593,7 @@ set yaw_spin_threshold = 1950
 set align_acc = DEFAULT
 set acc_hardware = AUTO
 set acc_lpf_hz = 10
-set acc_trim_pitch = 4
+set acc_trim_pitch = 6
 set acc_trim_roll = 0
 set acc_calibration = -32,0,-38
 set align_mag = DEFAULT
@@ -616,8 +614,8 @@ set baro_noise_lpf = 600
 set baro_cf_vel = 985
 set baro_cf_alt = 965
 set mid_rc = 1500
-set min_check = 1050
-set max_check = 1900
+set min_check = 1010
+set max_check = 1990
 set rssi_channel = 0
 set rssi_src_frame_errors = OFF
 set rssi_scale = 100
@@ -739,10 +737,10 @@ set gps_rescue_throttle_max = 1600
 set gps_rescue_throttle_hover = 1280
 set gps_rescue_sanity_checks = RESCUE_SANITY_OFF
 set gps_rescue_min_sats = 8
-set deadband = 0
+set deadband = 3
 set yaw_deadband = 0
 set yaw_control_reversed = OFF
-set pid_process_denom = 4
+set pid_process_denom = 1
 set runaway_takeoff_prevention = ON
 set runaway_takeoff_deactivate_delay = 500
 set runaway_takeoff_deactivate_throttle_percent = 25
@@ -765,7 +763,7 @@ set osd_warn_batt_not_full = OFF
 set osd_warn_batt_warning = ON
 set osd_warn_batt_critical = ON
 set osd_warn_visual_beeper = ON
-set osd_warn_crash_flip = ON
+set osd_warn_crash_flip = OFF
 set osd_warn_esc_fail = ON
 set osd_warn_core_temp = OFF
 set osd_rssi_alarm = 20
@@ -782,7 +780,7 @@ set osd_tim2 = 2561
 set osd_vbat_pos = 2401
 set osd_rssi_pos = 2169
 set osd_tim_1_pos = 2423
-set osd_tim_2_pos = 33
+set osd_tim_2_pos = 406
 set osd_remaining_time_estimate_pos = 234
 set osd_flymode_pos = 2145
 set osd_anti_gravity_pos = 234
@@ -791,8 +789,8 @@ set osd_vtx_channel_pos = 377
 set osd_crosshairs_pos = 2253
 set osd_ah_sbar_pos = 2254
 set osd_ah_pos = 200
-set osd_current_pos = 385
-set osd_mah_drawn_pos = 353
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2368
 set osd_craft_name_pos = 426
 set osd_gps_speed_pos = 218
 set osd_gps_lon_pos = 82
@@ -882,16 +880,16 @@ set rcdevice_init_dev_attempt_interval = 1000
 profile 0
 
 set dterm_lowpass_type = PT1
-set dterm_lowpass_hz = 80
-set dterm_lowpass2_hz = 160
+set dterm_lowpass_hz = 100
+set dterm_lowpass2_hz = 200
 set dterm_notch_hz = 0
 set dterm_notch_cutoff = 0
 set vbat_pid_gain = OFF
 set pid_at_min_throttle = ON
 set anti_gravity_threshold = 350
 set anti_gravity_gain = 5000
-set setpoint_relax_ratio = 50
-set dterm_setpoint_weight = 80
+set setpoint_relax_ratio = 0
+set dterm_setpoint_weight = 60
 set acc_limit_yaw = 100
 set acc_limit = 0
 set crash_dthreshold = 50
@@ -905,33 +903,33 @@ set crash_limit_yaw = 200
 set crash_recovery = OFF
 set iterm_rotation = ON
 set smart_feedforward = OFF
-set iterm_relax = RP
+set iterm_relax = OFF
 set iterm_relax_type = GYRO
-set iterm_relax_cutoff = 10
+set iterm_relax_cutoff = 11
 set iterm_windup = 40
 set iterm_limit = 150
 set pidsum_limit = 500
 set pidsum_limit_yaw = 400
 set yaw_lowpass_hz = 0
-set throttle_boost = 8
+set throttle_boost = 5
 set throttle_boost_cutoff = 15
 set acro_trainer_angle_limit = 20
 set acro_trainer_lookahead_ms = 50
 set acro_trainer_debug_axis = ROLL
 set acro_trainer_gain = 75
-set p_pitch = 58
-set i_pitch = 65
-set d_pitch = 35
-set p_roll = 50
-set i_roll = 60
-set d_roll = 30
-set p_yaw = 65
-set i_yaw = 60
-set d_yaw = 20
+set p_pitch = 50
+set i_pitch = 50
+set d_pitch = 27
+set p_roll = 46
+set i_roll = 45
+set d_roll = 25
+set p_yaw = 64
+set i_yaw = 45
+set d_yaw = 0
 set p_level = 50
-set i_level = 100
-set d_level = 100
-set level_limit = 47
+set i_level = 50
+set d_level = 75
+set level_limit = 55
 set horizon_tilt_effect = 75
 set horizon_tilt_expert_mode = OFF
 set abs_control_gain = 0
@@ -939,21 +937,21 @@ set abs_control_limit = 90
 set abs_control_error_limit = 20
 
 # rateprofile
-rateprofile 1
+rateprofile 0
 
 set thr_mid = 50
-set thr_expo = 20
+set thr_expo = 30
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 100
-set pitch_rc_rate = 100
-set yaw_rc_rate = 100
-set roll_expo = 20
-set pitch_expo = 20
-set yaw_expo = 20
-set roll_srate = 70
-set pitch_srate = 70
-set yaw_srate = 70
-set tpa_rate = 20
+set roll_rc_rate = 140
+set pitch_rc_rate = 140
+set yaw_rc_rate = 140
+set roll_expo = 30
+set pitch_expo = 30
+set yaw_expo = 30
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 60
+set tpa_rate = 15
 set tpa_breakpoint = 1050
 set throttle_limit_type = OFF
 set throttle_limit_percent = 100

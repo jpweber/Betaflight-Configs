@@ -70,11 +70,14 @@ adjrange 2 2 3 1825 2100 12 3 0 0
 # vtx
 
 # rxfail
+rxfail 5 s 1000
 
 # master
 set gyro_lowpass_hz = 120
-set acc_trim_pitch = 4
+set acc_trim_pitch = 6
 set acc_calibration = -32,0,-38
+set min_check = 1010
+set max_check = 1990
 set rc_interp_ch = RPYT
 set rc_smoothing_type = FILTER
 set fpv_mix_degrees = 35
@@ -82,21 +85,24 @@ set serialrx_provider = SBUS
 set dshot_idle_value = 500
 set motor_pwm_protocol = DSHOT600
 set vbat_warning_cell_voltage = 37
+set deadband = 3
+set pid_process_denom = 1
 set osd_units = IMPERIAL
 set osd_warn_batt_not_full = OFF
+set osd_warn_crash_flip = OFF
 set osd_warn_core_temp = OFF
 set osd_vbat_pos = 2401
 set osd_rssi_pos = 2169
 set osd_tim_1_pos = 2423
-set osd_tim_2_pos = 33
+set osd_tim_2_pos = 406
 set osd_flymode_pos = 2145
 set osd_throttle_pos = 225
 set osd_vtx_channel_pos = 377
 set osd_crosshairs_pos = 2253
 set osd_ah_sbar_pos = 2254
 set osd_ah_pos = 200
-set osd_current_pos = 385
-set osd_mah_drawn_pos = 353
+set osd_current_pos = 2336
+set osd_mah_drawn_pos = 2368
 set osd_craft_name_pos = 426
 set osd_gps_speed_pos = 218
 set osd_gps_lon_pos = 82
@@ -127,34 +133,23 @@ set osd_stat_bb_no = OFF
 # profile
 profile 0
 
-set dterm_lowpass_hz = 80
-set dterm_lowpass2_hz = 160
 set dterm_notch_cutoff = 0
-set setpoint_relax_ratio = 50
-set dterm_setpoint_weight = 80
-set iterm_relax = RP
-set iterm_relax_cutoff = 10
-set throttle_boost = 8
-set p_pitch = 58
-set i_pitch = 65
-set d_pitch = 35
-set p_roll = 50
-set i_roll = 60
-set d_roll = 30
-set i_yaw = 60
-set d_yaw = 20
-set i_level = 100
-set d_level = 100
-set level_limit = 47
+set p_yaw = 64
 
 # rateprofile
-rateprofile 1
+rateprofile 0
 
-set thr_expo = 20
-set roll_expo = 20
-set pitch_expo = 20
-set yaw_expo = 20
-set tpa_rate = 20
+set thr_expo = 30
+set roll_rc_rate = 140
+set pitch_rc_rate = 140
+set yaw_rc_rate = 140
+set roll_expo = 30
+set pitch_expo = 30
+set yaw_expo = 30
+set roll_srate = 60
+set pitch_srate = 60
+set yaw_srate = 60
+set tpa_rate = 15
 set tpa_breakpoint = 1050
 
 # 
